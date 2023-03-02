@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Compiler</title>
+  <style>
+    textarea {
+      width: 500px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Compiler</h1>
+  <p>Enter a JavaScript expression:</p>
+  <textarea id="expression"></textarea>
+  <button onclick="compile()">Compile</button>
+  <p id="result"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/acorn/dist/acorn.js"></script>
+  <script>
+    function compile() {
+      const expression = document.getElementById("expression").value;
+      const ast = acorn.parse(expression);
+      const result = eval(expression);
+      document.getElementById("result").innerHTML = `${expression} = ${result}`;
+    }
+  </script>
+</body>
+</html>
